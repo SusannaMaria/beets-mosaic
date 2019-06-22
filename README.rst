@@ -1,43 +1,16 @@
-Mosaic Plugin
-=====================
+Mosaic Plugin for beets
+=======================
 
-The ``mosaic`` plugin generates a montage of a mosiac from cover art.
+The ``mosaic`` plugin for beets generates a montage of a mosiac from cover art.
 
-To use the ``mosaic`` plugin, first enable it in your configuration (see
-:ref:`using-plugins`). Then, install the `Pillow`_ library by typing::
+install with 
 
-    pip install Pillow
+    pip install beets-mosaic
 
-The plugin uses `Pillow`_ to manipulate album art and create the mosiac.
 
-.. _pillow: http://pillow.readthedocs.io/en/latest/
-
-Furthermore, you have to install the `Parse`_ library by typing::
-
-    pip install Parse
-
-The plugin uses `Parse`_ to parse the geometry-option.
-
-.. _parse: https://github.com/r1chardj0n3s/parse
-
-Furthermore, you have to install the `TTFQuery`_ and `fontTools`_ library
-by typing::
-
-    pip install TTFQuery fontTools
-
-The plugin uses `TTFQuery`_ and `fontTools`_ for creation of cover art
-alternative if cover art is not present in your library.
-
-.. _ttfquery: http://ttfquery.sourceforge.net/
-.. _fonttools: https://github.com/fonttools/fonttools
-
-Furthermore, you have to install the `requests`_ library by typing::
-
-    pip install requests
-
-The plugin uses `requests`_ to download the ttf-font from url.
-
-.. _requests: http://docs.python-requests.org/en/latest/
+To use the ``mosaic`` plugin, first enable it in your configuration, see
+`using-plugins
+<https://beets.readthedocs.io/en/stable/plugins/index.html#using-plugins>`_
 
 By default the ``mosaic`` generates a mosaic, as mosaic.png in the
 current directory, of cover art out of the whole library .
@@ -90,3 +63,46 @@ configuration file. There is four option:
 - **font**: Link to url of a truetype font of your choice. It will be
   downloaded if the file is missing in the plugin folder.
   Default: ``https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Regular.ttf``
+
+Use from source
+---------------
+Mosaic plugin has some dependencies to other modules
+
+Install the `Pillow`_ library by typing::
+
+    pip install Pillow
+
+The plugin uses `Pillow`_ to manipulate album art and create the mosiac.
+
+.. _pillow: http://pillow.readthedocs.io/en/latest/
+
+Furthermore, you have to install the `Parse`_ library by typing::
+
+    pip install Parse
+
+The plugin uses `Parse`_ to parse the geometry-option.
+
+.. _parse: https://github.com/r1chardj0n3s/parse
+
+Furthermore, you have to install the `TTFQuery`_ and `fontTools`_ library
+by typing::
+
+    pip install TTFQuery fontTools
+
+The plugin uses `TTFQuery`_ and `fontTools`_ for creation of cover art
+alternative if cover art is not present in your library.
+
+.. _ttfquery: http://ttfquery.sourceforge.net/
+.. _fonttools: https://github.com/fonttools/fonttools
+
+Furthermore, you have to install the `requests`_ library by typing::
+
+    pip install requests
+
+The plugin uses `requests`_ to download the ttf-font from url.
+
+.. _requests: http://docs.python-requests.org/en/latest/
+
+Finally install the mosaic plugin with
+
+    python setup.py install
