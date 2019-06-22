@@ -3,7 +3,7 @@ from setuptools import setup
 
 here = path.abspath(path.dirname(__file__))
 
-with open(path.join(here, 'doc/mosaic.rst')) as f:
+with open(path.join(here, 'README.rst')) as f:
     readme = f.read()
 
 setup(
@@ -27,6 +27,6 @@ setup(
     ],
     keywords='beets mosaic',
     packages=['beetsplug'],
-    install_requires=['beets>=1.4.3'],
+    install_requires=['beets>=1.4.3','Pillow','Parse','TTFQuery', 'fontTools', 'requests'],
 )
 
