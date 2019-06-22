@@ -7,7 +7,7 @@ with open(path.join(here, 'README.rst')) as f:
     readme = f.read()
 
 setup(
-    name='beets-mosaic',
+    name='beets_mosaic',
     version='0.9.0',
     description='Plugin for the music library manager Beets. The mosaic plugin generates a montage of a mosiac from cover art.',
     long_description=readme,
@@ -18,8 +18,6 @@ setup(
     license='MIT',
     classifiers=[
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
