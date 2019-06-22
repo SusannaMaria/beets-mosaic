@@ -27,6 +27,6 @@ setup(
     ],
     keywords='beets mosaic',
     packages=['beetsplug'],
-    install_requires=['beets>=1.4.3','Pillow','Parse','TTFQuery', 'fontTools', 'requests'],
+    install_requires=['beets>=1.4.3','Pillow','Parse','TTFQuery>=2.0.0b1', 'fontTools', 'requests'],
 )
 
