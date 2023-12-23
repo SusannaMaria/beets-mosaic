@@ -8,7 +8,7 @@ def read(*pathcomponents):
 
 setup(
     name='beets_mosaic',
-    version='0.9.2',
+    version='0.9.3',
     description='Plugin for the music library manager Beets. The mosaic plugin generates a montage of a mosiac from cover art.',
     long_description=read('doc/package.rst'),
     url='https://github.com/susannamaria/beets-mosaic',

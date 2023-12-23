@@ -17,7 +17,6 @@ as watermark and use a alternative filename as result picture :
   -c HEXCOLOR, --color=HEXCOLOR 	background color as HEXCOLOR
   -g GEOMETRY, --geometry=GEOMETRY  Geometry defined as
                 <width>x<height>+<marginx>+<marginy>
-  -f FONT, --font=FONT              URL of ttf-font
 
 Examples
 --------
