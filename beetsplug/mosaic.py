@@ -46,10 +46,7 @@ class MosaicCoverArtPlugin(BeetsPlugin):
                          'show_mosaic': False,
                          'random': False,
                          'watermark': '',
-                         'watermark_alpha': 0.4,
-                         'font': 'https://github.com/google/fonts/raw/'
-                                 'master/ofl/inconsolata/'
-                                 'Inconsolata-Regular.ttf'})
+                         'watermark_alpha': 0.4})
 
     def commands(self):
         cmd = ui.Subcommand('mosaic', help=u"create mosaic from coverart")
@@ -89,11 +86,6 @@ class MosaicCoverArtPlugin(BeetsPlugin):
             action='store', metavar='GEOMETRY',
             help=u'define geometry as <width>x<height>+<marginx>+<marginy>'
         )
-        cmd.parser.add_option(
-            u'-f', u'--font', dest='font',
-            action='store', metavar='FONT',
-            help=u'url of ttf-font'
-        )
 
         def func(lib, opts, args):
             """collect parameters and download the font for cover creation
@@ -107,17 +99,8 @@ class MosaicCoverArtPlugin(BeetsPlugin):
             watermark_alpha = self.config['watermark_alpha'].get(float)
             background = self.config['background'].as_str()
             geometry = self.config['geometry'].as_str()
-            fonturl = self.config['font'].as_str()
 
             albums = lib.albums(ui.decargs(args))
-            filename = fonturl[fonturl.rfind("/") + 1:]
-            fontpath = os.path.join(tempfile.gettempdir(), filename)
-
-            if not os.path.isfile(fontpath):
-                self._log.debug("Download Font: " + fonturl)
-                response = requests.get(fonturl)
-                with open(fontpath, 'wb') as f:
-                    f.write(response.content)
 
             self._generate_montage(lib,
                                    albums,
@@ -126,8 +109,7 @@ class MosaicCoverArtPlugin(BeetsPlugin):
                                    background,
                                    watermark_alpha,
                                    geometry,
-                                   random,
-                                   fontpath)
+                                   random)
 
         cmd.func = func
         return [cmd]
@@ -141,7 +123,7 @@ class MosaicCoverArtPlugin(BeetsPlugin):
     def _generate_montage(self, lib, albums,
                           fn_mosaic, fn_watermark,
                           background, watermark_alpha,
-                          geometry, random, fontpath):
+                          geometry, random):
         """Generate the mosaic.
         """
         # Construct the parser for getting the geometry parameter
@@ -151,7 +133,7 @@ class MosaicCoverArtPlugin(BeetsPlugin):
 
         # Load Truetype font from plugin folder, which was downloaded before
         # tweak the fontsize according to the cell width
-        fnt = ImageFont.truetype(fontpath, int(round(geo['cellwidth'] / 10)))
+        fnt = ImageFont.truetype("DejaVuSans.ttf", layout_engine=ImageFont.Layout.BASIC, size=int(round(geo['cellwidth'] / 10)))
 
         covers = []
         # based on retrieved albums create a list of album cover
@@ -232,7 +214,7 @@ class MosaicCoverArtPlugin(BeetsPlugin):
                     # load the normal cover image
                     # and resize it
                     im = Image.open(cover)
-                    im.thumbnail(size, Image.ANTIALIAS)
+                    im.thumbnail(size, Image.LANCZOS)
 
                 self._log.debug(u'Paste into mosaic: {} - {}x{}',
                                 cover, offset_x, offset_y)

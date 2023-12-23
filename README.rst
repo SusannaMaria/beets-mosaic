@@ -25,7 +25,6 @@ and use a alternative filename as result picture ::
   -a ALPHA, --alpha=ALPHA       	ALPHA value for blending 0.0-1.0
   -c HEXCOLOR, --color=HEXCOLOR 	background color as HEXCOLOR
   -g GEOMETRY, --geometry=GEOMETRY  Geometry defined as <width>x<height>+<marginx>+<marginy>
-  -f FONT, --font=FONT              URL of ttf-font
 
 Examples
 --------
@@ -60,9 +59,6 @@ configuration file. There is four option:
 - **geometry**: Define geometry of each cover defined as
   <width>x<height>+<marginx>+<marginy>
   Default: ``100x100+3+3``
-- **font**: Link to url of a truetype font of your choice. It will be
-  downloaded if the file is missing in the plugin folder.
-  Default: ``https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Regular.ttf``
 
 Use from source
 ---------------
